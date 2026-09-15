@@ -2,9 +2,9 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
 
-// Deployed at https://nitocode.github.io/mmcup-team-hq/
+// Served from the custom domain https://mmcup-hq.nitocode.com (see public/CNAME).
 export default defineConfig({
-  base: '/mmcup-team-hq/',
+  base: '/',
   plugins: [vue(), tailwindcss()],
   define: {
     __VUE_I18N_FULL_INSTALL__: true,

@@ -4,7 +4,7 @@ A single-page app for the internal MMCup competition: a 3D globe with mystery ma
 Click a marker (or a set of coordinates in the side panel) to fly there and discover
 which team is based at that location, along with a gently roasting description.
 
-Live: https://nitocode.github.io/mmcup-team-hq/
+Live: https://mmcup-hq.nitocode.com
 
 ## Stack
 
@@ -52,7 +52,9 @@ npm run dev
 
 Pushes to `main` trigger `.github/workflows/deploy.yml`, which builds the app and
 publishes `dist/` with GitHub Pages (repository settings, Pages, Source:
-**GitHub Actions**). The Vite `base` is set to `/mmcup-team-hq/`.
+**GitHub Actions**). The site is served from the custom domain in `public/CNAME`,
+so the Vite `base` is `/`. Reverting to the `github.io` URL means deleting that file
+and setting `base` back to `/mmcup-team-hq/`.
 
 To publish manually without Actions:
 

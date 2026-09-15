@@ -1,7 +1,7 @@
 export default {
   app: {
     title: 'MMCup · QG des équipes',
-    subtitle: 'Chaque équipe a reçu un QG. Certaines ont eu plus de chance que d’autres.',
+    subtitle: 'Nos services de renseignement ont localisé chaque QG. Dossier déclassifié, à vous de l’ouvrir.',
   },
   globe: {
     hint: 'Faites tourner le globe et cliquez sur un point lumineux pour révéler qui y habite.',
@@ -29,6 +29,7 @@ export default {
   },
   a11y: {
     guideDog: 'Chien guide',
+    guideDogActive: 'Mode chien guide activé : affichage simplifié, sans animation.',
     guideDogHint: 'Affichage simplifié, sans globe ni animation.',
     listTitle: 'Liste des quartiers généraux',
     listHint: 'Révélez chaque lieu un par un. Sans animation ni globe interactif.',
@@ -38,6 +39,26 @@ export default {
     switch: 'Changer de langue',
   },
   teams: {
+    blairassons: {
+      location: 'Mine de Mponeng, Afrique du Sud',
+      description:
+        'Terrés à quatre kilomètres sous terre. Plus le terrier est profond, moins on arrive à les blairer.',
+    },
+    granfrissons: {
+      location: 'Oïmiakon, Sibérie',
+      description:
+        'Le grand frisson par moins soixante degrés. Ils tremblent beaucoup, mais jamais à l’idée de gagner.',
+    },
+    smithetwessons: {
+      location: 'Tombstone, Arizona',
+      description:
+        'Un QG à Pierre Tombale. Ils dégainent très vite, et visent systématiquement à côté.',
+    },
+    zigouillassons: {
+      location: 'Île aux serpents, Brésil',
+      description:
+        'Ils comptaient zigouiller la concurrence. Sur l’île aux serpents, c’est plutôt l’inverse qui se prépare.',
+    },
     truffassons: {
       location: 'Paris, France',
       description:

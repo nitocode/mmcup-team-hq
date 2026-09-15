@@ -1,7 +1,7 @@
 export default {
   app: {
     title: 'MMCup · Team HQ',
-    subtitle: 'Every team got a headquarters. Some got luckier than others.',
+    subtitle: 'Our intelligence services pinpointed every HQ. The file is declassified, yours to open.',
   },
   globe: {
     hint: 'Drag to spin the globe. Click a glowing marker to reveal who lives there.',
@@ -29,6 +29,7 @@ export default {
   },
   a11y: {
     guideDog: 'Guide dog',
+    guideDogActive: 'Guide dog mode is on: simplified display, no animation.',
     guideDogHint: 'Simplified display, no globe and no animation.',
     listTitle: 'Headquarters list',
     listHint: 'Reveal each location one by one. No animation, no interactive globe.',
@@ -38,6 +39,26 @@ export default {
     switch: 'Switch language',
   },
   teams: {
+    blairassons: {
+      location: 'Mponeng Mine, South Africa',
+      description:
+        'Holed up four kilometres underground. The deeper the burrow, the harder they are to stomach.',
+    },
+    granfrissons: {
+      location: 'Oymyakon, Siberia',
+      description:
+        'The big thrill at minus sixty degrees. Plenty of shivering, never at the idea of winning.',
+    },
+    smithetwessons: {
+      location: 'Tombstone, Arizona',
+      description:
+        'An HQ in Tombstone. Very quick on the draw, and consistently off target.',
+    },
+    zigouillassons: {
+      location: 'Snake Island, Brazil',
+      description:
+        'They planned to wipe out the competition. On Snake Island the arrangement runs the other way.',
+    },
     truffassons: {
       location: 'Paris, France',
       description:

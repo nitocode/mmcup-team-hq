@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import LanguageSwitcher from './LanguageSwitcher.vue'
+import PawIcon from './PawIcon.vue'
 import { guideDog, toggleGuideDog } from '../composables/useGuideDog'
 
 defineEmits<{
@@ -14,19 +15,22 @@ const { t } = useI18n()
   <div class="flex shrink-0 flex-col items-end gap-2 sm:flex-row sm:items-center">
     <LanguageSwitcher />
 
+    <!-- Paw button. Icon only while off; it grows a label once the mode is on. -->
     <button
       type="button"
-      class="whitespace-nowrap rounded-full border px-3.5 py-2 text-xs font-bold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 sm:text-sm"
+      class="flex items-center gap-2 rounded-full border font-bold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
       :class="
         guideDog
-          ? 'border-white bg-white text-slate-900'
-          : 'border-white/20 bg-slate-900/70 text-slate-200 hover:bg-white/10'
+          ? 'border-white bg-white px-3.5 py-2 text-xs text-slate-900 sm:text-sm'
+          : 'h-10 w-10 justify-center border-white/20 bg-slate-900/70 text-slate-200 hover:bg-white/10'
       "
       :aria-pressed="guideDog"
-      :title="t('a11y.guideDogHint')"
+      :aria-label="t('a11y.guideDog')"
+      :title="guideDog ? t('a11y.guideDogActive') : t('a11y.guideDogHint')"
       @click="toggleGuideDog()"
     >
-      {{ t('a11y.guideDog') }}
+      <PawIcon class="h-5 w-5 shrink-0" />
+      <span v-if="guideDog" class="whitespace-nowrap">{{ t('a11y.guideDog') }}</span>
     </button>
 
     <button

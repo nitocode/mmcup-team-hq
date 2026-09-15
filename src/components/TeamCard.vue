@@ -57,7 +57,7 @@ watch(
         <button
           ref="closeButton"
           type="button"
-          class="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full text-slate-300 transition hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+          class="absolute right-3 top-3 z-20 flex h-11 w-11 items-center justify-center rounded-full bg-white/5 text-slate-300 ring-1 ring-white/10 transition hover:bg-white/15 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
           :aria-label="t('card.close')"
           @click="emit('close')"
         >

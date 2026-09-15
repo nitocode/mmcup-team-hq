@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n'
 import GlobeView from './components/GlobeView.vue'
 import HeaderControls from './components/HeaderControls.vue'
 import MysteryPanel from './components/MysteryPanel.vue'
+import PawIcon from './components/PawIcon.vue'
 import TeamCard from './components/TeamCard.vue'
 import TeamListView from './components/TeamListView.vue'
 import ToastMessage from './components/ToastMessage.vue'
@@ -61,6 +62,14 @@ onBeforeUnmount(() => {
       </div>
       <HeaderControls @cant-find="showToast(t('cantFind.toast'))" />
     </header>
+
+    <p
+      role="status"
+      class="mx-auto mb-6 flex max-w-3xl items-center gap-3 rounded-2xl border border-amber-300/50 bg-amber-300/10 px-4 py-3 text-sm font-semibold text-amber-100"
+    >
+      <PawIcon class="h-5 w-5 shrink-0 text-amber-300" />
+      {{ t('a11y.guideDogActive') }}
+    </p>
 
     <TeamListView :teams="teams" :revealed="revealed" @select="select" />
     <ToastMessage :message="toast" />

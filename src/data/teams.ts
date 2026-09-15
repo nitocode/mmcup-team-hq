@@ -13,8 +13,9 @@ export interface Team {
 type RosterEntry = Omit<Team, 'logo'> & { logo?: string }
 
 /**
- * Every team of the competition. Drop a `<id>.png` file in `public/logos/` and
- * point `logo` at it to make the team appear on the globe.
+ * Every team of the competition. The eight with artwork are the ones placed on
+ * the globe; the entries kept at the bottom are waiting for a logo file and stay
+ * hidden until one lands in `public/logos/`.
  */
 const roster: RosterEntry[] = [
   {
@@ -31,16 +32,6 @@ const roster: RosterEntry[] = [
     location: [-48.8767, -123.3933],
   },
   {
-    id: 'mouflassons',
-    name: 'Mouflassons',
-    location: [-75.2509, -0.0713],
-  },
-  {
-    id: 'boulassons',
-    name: 'Boulassons',
-    location: [23.4162, 25.6628],
-  },
-  {
     id: 'crepassons',
     name: 'Crêpassons',
     logo: 'logos/crepassons.png',
@@ -51,6 +42,42 @@ const roster: RosterEntry[] = [
     name: 'Paillassons',
     logo: 'logos/paillassons.png',
     location: [27.9881, 86.925],
+  },
+  {
+    id: 'blairassons',
+    name: 'Blairassons',
+    logo: 'logos/blairassons.png',
+    location: [-26.4264, 27.4014],
+  },
+  {
+    id: 'granfrissons',
+    name: 'Granfrissons',
+    logo: 'logos/granfrissons.png',
+    location: [63.4608, 142.7858],
+  },
+  {
+    id: 'smithetwessons',
+    name: 'Smith et Wessons',
+    logo: 'logos/smithetwessons.png',
+    location: [31.7129, -110.0676],
+  },
+  {
+    id: 'zigouillassons',
+    name: 'Zigouillassons',
+    logo: 'logos/zigouillassons.webp',
+    location: [-24.4857, -46.675],
+  },
+
+  // Awaiting artwork.
+  {
+    id: 'mouflassons',
+    name: 'Mouflassons',
+    location: [-75.2509, -0.0713],
+  },
+  {
+    id: 'boulassons',
+    name: 'Boulassons',
+    location: [23.4162, 25.6628],
   },
   {
     id: 'grospoissons',
