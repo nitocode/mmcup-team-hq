@@ -25,7 +25,8 @@ export default {
   },
   cantFind: {
     button: "Can't find my team?",
-    toast: 'No HQ for your team. They had already lost, so we saved them the rent.',
+    toast:
+      'No HQ on file. Our intelligence services never rated your team threatening enough to put it under surveillance.',
   },
   a11y: {
     guideDog: 'Guide dog',
@@ -47,7 +48,7 @@ export default {
     granfrissons: {
       location: 'Oymyakon, Siberia',
       description:
-        'The big thrill at minus sixty degrees. Plenty of shivering, never at the idea of winning.',
+        'The big thrill was promised, the big cold turned up instead. At minus sixty, even the bear on the crest is asking for a scarf.',
     },
     smithetwessons: {
       location: 'Tombstone, Arizona',

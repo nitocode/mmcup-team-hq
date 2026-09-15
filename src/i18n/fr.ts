@@ -25,7 +25,8 @@ export default {
   },
   cantFind: {
     button: 'Vous ne trouvez pas votre équipe ?',
-    toast: 'Pas de QG pour votre équipe. Elle avait déjà perdu, on lui a épargné le loyer.',
+    toast:
+      'Aucun QG au dossier. Nos services de renseignement n’ont jamais jugé votre équipe assez menaçante pour la placer sous surveillance.',
   },
   a11y: {
     guideDog: 'Chien guide',
@@ -47,7 +48,7 @@ export default {
     granfrissons: {
       location: 'Oïmiakon, Sibérie',
       description:
-        'Le grand frisson par moins soixante degrés. Ils tremblent beaucoup, mais jamais à l’idée de gagner.',
+        'On leur avait promis le grand frisson, ils ont eu le grand rhume. Par moins soixante, même l’ours du blason réclame une écharpe.',
     },
     smithetwessons: {
       location: 'Tombstone, Arizona',
