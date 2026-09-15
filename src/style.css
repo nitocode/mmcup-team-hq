@@ -96,3 +96,11 @@ body {
   transition-delay: 0ms !important;
   scroll-behavior: auto !important;
 }
+
+/* Tailwind v4 preflight resets buttons to the default arrow; put the hand back.
+   Unlayered, so it wins over preflight but still loses to an explicit utility. */
+button:not(:disabled),
+summary,
+[role='button']:not([aria-disabled='true']) {
+  cursor: pointer;
+}
