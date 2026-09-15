@@ -5,12 +5,10 @@ import { assetUrl, formatCoordinates, type Team } from '../data/teams'
 
 const props = defineProps<{
   team: Team | null
-  hasNext: boolean
 }>()
 
 const emit = defineEmits<{
   close: []
-  next: []
 }>()
 
 const { t } = useI18n()
@@ -71,26 +69,20 @@ watch(
         <div class="relative flex flex-col items-center text-center">
           <div
             class="mb-4 flex h-28 w-28 items-center justify-center overflow-hidden rounded-3xl shadow-2xl ring-2"
-            :class="team.prime ? 'bg-amber-100 ring-amber-300/70' : 'bg-slate-800 ring-white/15'"
+            :class="team.prime ? 'bg-slate-900 ring-amber-300/70' : 'bg-slate-900 ring-white/15'"
           >
-            <img
-              v-if="team.logo"
-              :src="assetUrl(team.logo)"
-              :alt="`${team.name} logo`"
-              class="h-full w-full object-cover"
-            />
-            <span v-else class="text-6xl leading-none" aria-hidden="true">{{ team.emoji }}</span>
+            <img :src="assetUrl(team.logo)" :alt="team.name" class="h-full w-full object-cover" />
           </div>
 
           <p
             v-if="team.prime"
-            class="mb-2 inline-flex items-center gap-1 rounded-full bg-amber-300/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-amber-200 ring-1 ring-amber-300/40"
+            class="mb-2 inline-flex items-center rounded-full bg-amber-300/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-amber-200 ring-1 ring-amber-300/40"
           >
-            ⭐ {{ t('card.prime') }}
+            {{ t('card.prime') }}
           </p>
 
           <h2 :id="`team-title-${team.id}`" class="text-3xl font-extrabold tracking-tight text-white">
-            {{ team.name }} <span aria-hidden="true">{{ team.emoji }}</span>
+            {{ team.name }}
           </h2>
 
           <div class="mt-4 w-full rounded-2xl bg-white/5 px-4 py-3 ring-1 ring-white/10">
@@ -98,7 +90,7 @@ watch(
               {{ t('card.hq') }}
             </p>
             <p class="mt-1 text-lg font-semibold text-sky-200">
-              📍 {{ t(`teams.${team.id}.location`) }}
+              {{ t(`teams.${team.id}.location`) }}
             </p>
             <p class="mt-0.5 font-mono text-xs text-slate-400">
               {{ formatCoordinates(team.location) }}
@@ -109,21 +101,13 @@ watch(
             {{ t(`teams.${team.id}.description`) }}
           </p>
 
-          <div class="mt-6 flex w-full flex-col-reverse gap-2 sm:flex-row sm:justify-center">
+          <div class="mt-6 flex w-full justify-center">
             <button
               type="button"
-              class="rounded-full px-5 py-2.5 text-sm font-semibold text-slate-200 ring-1 ring-white/15 transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+              class="rounded-full px-6 py-2.5 text-sm font-semibold text-slate-200 ring-1 ring-white/15 transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
               @click="emit('close')"
             >
               {{ t('card.close') }}
-            </button>
-            <button
-              v-if="hasNext"
-              type="button"
-              class="rounded-full bg-amber-300 px-5 py-2.5 text-sm font-bold text-slate-900 shadow-lg shadow-amber-300/30 transition hover:bg-amber-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-100"
-              @click="emit('next')"
-            >
-              {{ t('card.next') }} →
             </button>
           </div>
         </div>

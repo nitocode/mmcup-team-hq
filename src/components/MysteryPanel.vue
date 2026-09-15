@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { formatCoordinates, type Team } from '../data/teams'
+import { assetUrl, formatCoordinates, type Team } from '../data/teams'
 
 const props = defineProps<{
   teams: Team[]
@@ -29,7 +29,7 @@ const progress = computed(() => (props.teams.length ? revealedCount.value / prop
     <header class="px-5 pb-3 pt-5">
       <div class="flex items-start justify-between gap-3">
         <div>
-          <h2 class="text-base font-bold tracking-tight text-white">🛰️ {{ t('panel.title') }}</h2>
+          <h2 class="text-base font-bold tracking-tight text-white">{{ t('panel.title') }}</h2>
           <p class="mt-0.5 text-xs text-slate-400">{{ t('panel.subtitle') }}</p>
         </div>
         <button
@@ -60,22 +60,24 @@ const progress = computed(() => (props.teams.length ? revealedCount.value / prop
         <button
           type="button"
           class="group flex w-full items-center gap-3 rounded-2xl px-2 py-2 text-left transition focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/70"
-          :class="
-            selectedId === team.id
-              ? 'bg-white/10 ring-1 ring-white/20'
-              : 'hover:bg-white/5'
-          "
+          :class="selectedId === team.id ? 'bg-white/10 ring-1 ring-white/20' : 'hover:bg-white/5'"
           @click="emit('select', team)"
         >
           <span
-            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-lg transition group-hover:scale-105"
+            class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl transition group-hover:scale-105"
             :class="
               revealed.has(team.id)
-                ? 'bg-sky-400/15 ring-1 ring-sky-300/40'
-                : 'bg-amber-300/15 font-bold text-amber-200 ring-1 ring-amber-300/40'
+                ? 'bg-slate-900 ring-1 ring-sky-300/40'
+                : 'bg-amber-300/15 text-lg font-bold text-amber-200 ring-1 ring-amber-300/40'
             "
           >
-            {{ revealed.has(team.id) ? team.emoji : '?' }}
+            <img
+              v-if="revealed.has(team.id)"
+              :src="assetUrl(team.logo)"
+              :alt="team.name"
+              class="h-full w-full object-cover"
+            />
+            <template v-else>?</template>
           </span>
           <span class="min-w-0 flex-1">
             <span class="block truncate text-sm font-semibold text-white">
@@ -88,12 +90,18 @@ const progress = computed(() => (props.teams.length ? revealedCount.value / prop
               {{ revealed.has(team.id) ? t(`teams.${team.id}.location`) : formatCoordinates(team.location) }}
             </span>
           </span>
-          <span
-            class="text-slate-500 transition group-hover:translate-x-0.5 group-hover:text-slate-300"
+          <svg
+            viewBox="0 0 16 16"
+            class="h-4 w-4 shrink-0 text-slate-500 transition group-hover:translate-x-0.5 group-hover:text-slate-300"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
             aria-hidden="true"
           >
-            →
-          </span>
+            <path d="M6 3l5 5-5 5" />
+          </svg>
         </button>
       </li>
     </ul>

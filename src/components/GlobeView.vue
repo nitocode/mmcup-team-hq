@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, type ComponentPublicInstance } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { formatCoordinates, type Team } from '../data/teams'
+import { assetUrl, formatCoordinates, type Team } from '../data/teams'
 import { useGlobe, type ScreenPoint } from '../composables/useGlobe'
 
 const props = defineProps<{
@@ -54,7 +54,7 @@ defineExpose({ flyTo })
         :key="team.id"
         :ref="(el) => setMarkerEl(i, el)"
         type="button"
-        class="group pointer-events-auto absolute left-0 top-0 flex h-11 w-11 items-center justify-center rounded-full outline-none will-change-transform focus-visible:ring-2 focus-visible:ring-amber-300/80"
+        class="group pointer-events-auto absolute left-0 top-0 flex h-12 w-12 items-center justify-center rounded-full outline-none will-change-transform focus-visible:ring-2 focus-visible:ring-amber-300/80"
         style="opacity: 0; visibility: hidden"
         :aria-label="
           revealed.has(team.id)
@@ -65,24 +65,26 @@ defineExpose({ flyTo })
       >
         <!-- Pulse ring -->
         <span
-          class="absolute inset-1.5 rounded-full"
-          :class="
-            revealed.has(team.id)
-              ? 'bg-sky-300/40'
-              : 'bg-amber-300/50 animate-ping-slow'
-          "
+          class="absolute inset-2 rounded-full"
+          :class="revealed.has(team.id) ? 'bg-sky-300/30' : 'animate-ping-slow bg-amber-300/50'"
         ></span>
         <!-- Core -->
         <span
-          class="relative flex h-7 w-7 items-center justify-center rounded-full text-sm font-bold shadow-lg transition-transform duration-200 group-hover:scale-110"
+          class="relative flex items-center justify-center overflow-hidden rounded-full shadow-lg transition-transform duration-200 group-hover:scale-110"
           :class="[
             revealed.has(team.id)
-              ? 'bg-slate-900/80 ring-2 ring-sky-300/80 text-base'
-              : 'bg-amber-300 text-slate-900 ring-2 ring-amber-100/80 shadow-amber-300/50',
+              ? 'h-9 w-9 bg-slate-900 ring-2 ring-sky-300/80'
+              : 'h-7 w-7 bg-amber-300 text-sm font-bold text-slate-900 shadow-amber-300/50 ring-2 ring-amber-100/80',
             selectedId === team.id ? 'scale-125 ring-4 ring-white/80' : '',
           ]"
         >
-          {{ revealed.has(team.id) ? team.emoji : '?' }}
+          <img
+            v-if="revealed.has(team.id)"
+            :src="assetUrl(team.logo)"
+            :alt="team.name"
+            class="h-full w-full object-cover"
+          />
+          <template v-else>?</template>
         </span>
       </button>
     </div>

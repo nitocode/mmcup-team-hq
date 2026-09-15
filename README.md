@@ -13,6 +13,22 @@ Live: https://nitocode.github.io/mmcup-team-hq/
 - [cobe](https://cobe.vercel.app/) for the WebGL globe
 - vue-i18n for the English / French toggle
 
+## Teams and logos
+
+A team is placed on the globe only when it has a logo. Drop the image in
+`public/logos/` and point the `logo` field of that team in `src/data/teams.ts` at it.
+Teams left without a logo stay in the roster but are not rendered anywhere.
+
+## Guide dog mode
+
+The header toggle labelled "Chien guide" / "Guide dog" swaps the WebGL globe for a
+static, scrollable list of headquarters and disables every animation and transition.
+Revealing a location expands it in place instead of opening a dialog. The choice is
+kept in `localStorage` and starts enabled when the system asks for reduced motion.
+
+Outside that mode there is no shortcut to the next location: each headquarters has to
+be found on the globe or in the coordinates panel.
+
 ## How marker clicks work
 
 cobe renders to a canvas and has no DOM events for markers. The app mirrors cobe's
@@ -35,7 +51,7 @@ npm run dev
 ## Deployment
 
 Pushes to `main` trigger `.github/workflows/deploy.yml`, which builds the app and
-publishes `dist/` with GitHub Pages (repository settings → Pages → Source:
+publishes `dist/` with GitHub Pages (repository settings, Pages, Source:
 **GitHub Actions**). The Vite `base` is set to `/mmcup-team-hq/`.
 
 To publish manually without Actions:
